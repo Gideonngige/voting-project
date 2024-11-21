@@ -1,0 +1,41 @@
+.container{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.inner-container{
+    background-color: #4169E1;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+.container .inner-container hr{
+    color: white;
+}
+
+.container .inner-container input[type="checkbox"]{
+    margin: 10px;
+    width: 40px;
+}
+.container .inner-container label{
+    color: white;
+    font-size: 25px;
+}
+.container .inner-container .radiobtn{
+    width: 25px;
+    height: 25px;
+}
+.btnBack{
+    float: left;
+    width: 45%;
+    height: 50px;
+    
+}
+.btnNext{
+    float: right;
+    width: 45%;
+    height: 50px;
+    
+}
+

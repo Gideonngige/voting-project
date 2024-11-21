@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.inner-container{
+    background-color: #4169E1;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+.container .inner-container h2{
+    color: white;
+    text-align: center;
+}
+.container .inner-container hr{
+    color: white;
+}
+.container .inner-container label{
+    font-size: 20px;
+
+}
+.container .inner-container input[type="submit"]:hover{
+    background-color: black;
+    color: white;
+
+}
+.container .inner-container a{
+    float: right;
+    color: black;
+    text-decoration: none;
+}
