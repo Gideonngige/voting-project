@@ -20,18 +20,18 @@
                     <table width="100%">
                         <tr>
                             <th>Candidate</th>
-                            <th>Votes</th>
+                            <th>Not Casted</th>
                         </tr>
                         <tr>
-                            <td>Hassan Wakamoni</td>
+                            <td>Governor</td>
                             <td>234</td>
                         </tr>
                         <tr>
-                            <td>Gideon Ushindi</td>
+                            <td>Senator</td>
                             <td>235</td>
                         </tr>
                         <tr>
-                            <td>Stephen Githae</td>
+                            <td>Women Representative</td>
                             <td>400</td>
                         </tr>
                         <tr>
