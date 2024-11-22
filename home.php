@@ -1,3 +1,13 @@
+<?php 
+session_start();
+$logged_in = false;
+if(isset($_SESSION["is_logged_in"])){
+  $logged_in = true;
+}
+else{
+  $logged_in = false;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +62,8 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad expedita odit eveniet. Fugiat, ipsum? Quo eveniet aliquam ea aperiam placeat minima unde delectus asperiores nulla iure, nihil deserunt, voluptatem magnam? </p>
       <table>
         <tr>
-          <td><a href="login.php"><input type="submit" value="Login"  /></a></td>
-          <td><a href="vote.php"><input type="submit" value="Vote"  /></a></td>
+          <td><a href="login.php"><input type="submit" value="Login"   /></a></td>
+          <td><a href="vote.php"><input type="submit" value="Vote" <?php if(!$logged_in) echo 'disabled'; ?>  /></a></td>
         </tr>
       </table>
       </div>
@@ -73,7 +83,7 @@
       <h3>See Results as People votes</h3>
       <div class="loginText">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad expedita odit eveniet. Fugiat, ipsum? Quo eveniet aliquam ea aperiam placeat minima unde delectus asperiores nulla iure, nihil deserunt, voluptatem magnam? </p>
-      <a href="results.php"><input type="submit" value="See results"  /></a>
+      <a href="results.php"><input type="submit" value="See results" <?php if(!$logged_in) echo 'disabled'; ?>  /></a>
       </div>
     </div>
   </div>

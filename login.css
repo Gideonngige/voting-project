@@ -31,3 +31,11 @@
     color: black;
     text-decoration: none;
 }
+.btn-custom{
+    width: 100%;
+    background-color: white;
+}
+.btn-custom:hover{
+    background-color: black;
+    color: white;
+}
