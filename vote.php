@@ -78,7 +78,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $insert_governor_vote = "INSERT INTO GovernorVotes (voter_id, governor_id) VALUES ('$voter_id', '$governor_id')";
         mysqli_query($conn, $insert_governor_vote);
         header("Location: senator.php");
-
       }
     
   }

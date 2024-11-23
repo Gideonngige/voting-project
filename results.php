@@ -1,3 +1,19 @@
+<?php 
+$servername = "localhost";
+$username = "root";
+$password = "@mysql2024";
+$dbname = "election";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if(!$conn){
+  //die("Connection failed!" . mysqli_connect_error());
+}
+else{
+ //echo "Connected";
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,138 +29,125 @@
         <div class="head">
             <h3>Results</h3>
         </div>
+        <!--governors-->
         <div class="row">
+        <div class="col-sm-3"> 
+            <h3>Governors</h3>  
+            <div class="voteDisplay">
+            <table class="table table-bordered"> 
+                <thead> 
+                    <tr> 
+                        <th>Candidate</th>
+                        <th>Votes</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                <?php 
+                    $select_governors = "SELECT governor_id, governor_name FROM Governor";
+                    $result = mysqli_query($conn, $select_governors);
+                    if ($result->num_rows > 0) { 
+                        // Output data of each row 
+                        while($row = $result->fetch_assoc()) { 
+                            $governor_id = $row['governor_id'];
+                            $vote_count = "SELECT COUNT(governor_id) AS vote_count FROM GovernorVotes WHERE governor_id = '$governor_id' ";
+                            $result2 = mysqli_query($conn,$vote_count);
+                            $row2 = mysqli_fetch_array($result2);
+
+                            echo '<tr>
+                            <td>' . htmlspecialchars($row["governor_name"]) . '</td>
+                            <td>' . htmlspecialchars($row2["vote_count"]) . '</td>
+                            </tr>'; 
+                            } 
+                            
+                            } else {
+                                 echo '<tr><td>No names found</td></tr>'; 
+                                 } 
+                                 ?> 
+                                 </tbody> 
+                                </table> 
+                                </div>
+                            </div>
+<!--end of governors-->
+
+<!--senator-->                            
         <div class="col-sm-3">
-                <h3>Analysis</h3>
-                <div class="voteDisplay">
-                    <table width="100%">
-                        <tr>
-                            <th>Candidate</th>
-                            <th>Not Casted</th>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>234</td>
-                        </tr>
-                        <tr>
-                            <td>Senator</td>
-                            <td>235</td>
-                        </tr>
-                        <tr>
-                            <td>Women Representative</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>Jacob Juma</td>
-                            <td>294</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td>800</td>
-                        </tr>
-                    </table>
+        <h3>Senators</h3>  
+            <div class="voteDisplay">
+            <table class="table table-bordered"> 
+                <thead> 
+                    <tr> 
+                        <th>Candidate</th>
+                        <th>Votes</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                <?php 
+                    $select_senators = "SELECT senator_id, senator_name FROM Senator";
+                    $result = mysqli_query($conn, $select_senators);
+                    if ($result->num_rows > 0) { 
+                        // Output data of each row 
+                        while($row = $result->fetch_assoc()) { 
+                            $senator_id = $row['senator_id'];
+                            $vote_count = "SELECT COUNT(senator_id) AS vote_count FROM SenatorVotes WHERE senator_id = '$senator_id' ";
+                            $result2 = mysqli_query($conn,$vote_count);
+                            $row2 = mysqli_fetch_array($result2);
+
+                            echo '<tr>
+                            <td>' . htmlspecialchars($row["senator_name"]) . '</td>
+                            <td>' . htmlspecialchars($row2["vote_count"]) . '</td>
+                            </tr>'; 
+                            } 
+                            
+                            } else {
+                                 echo '<tr><td>No names found</td></tr>'; 
+                                 } 
+                                 ?> 
+                            </tbody> 
+                                </table> 
 
                 </div>
             </div>
+<!--end of senators-->
+
+<!--women rep-->
             <div class="col-sm-3">
-                <h3>Governor</h3>
-                <div class="voteDisplay">
-                    <table width="100%">
-                        <tr>
-                            <th>Candidate</th>
-                            <th>Votes</th>
-                        </tr>
-                        <tr>
-                            <td>Hassan Wakamoni</td>
-                            <td>234</td>
-                        </tr>
-                        <tr>
-                            <td>Gideon Ushindi</td>
-                            <td>235</td>
-                        </tr>
-                        <tr>
-                            <td>Stephen Githae</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>Jacob Juma</td>
-                            <td>294</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td>800</td>
-                        </tr>
-                    </table>
+            <h3>Women Rep</h3>  
+            <div class="voteDisplay">
+            <table class="table table-bordered"> 
+                <thead> 
+                    <tr> 
+                        <th>Candidate</th>
+                        <th>Votes</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <?php 
+                    $select_womenReps = "SELECT womenRep_id, womenRep_name FROM WomenRep";
+                    $result = mysqli_query($conn, $select_womenReps);
+                    if ($result->num_rows > 0) { 
+                        // Output data of each row 
+                        while($row = $result->fetch_assoc()) { 
+                            $womenRep_id = $row['womenRep_id'];
+                            $vote_count = "SELECT COUNT(womenRep_id) AS vote_count FROM WomenRepVotes WHERE womenRep_id = '$womenRep_id' ";
+                            $result2 = mysqli_query($conn,$vote_count);
+                            $row2 = mysqli_fetch_array($result2);
 
+                            echo '<tr>
+                            <td>' . htmlspecialchars($row["womenRep_name"]) . '</td>
+                            <td>' . htmlspecialchars($row2["vote_count"]) . '</td>
+                            </tr>'; 
+                            } 
+                            
+                            } else {
+                                 echo '<tr><td>No names found</td></tr>'; 
+                                 } 
+                                 ?> 
+                            </tbody> 
+                                </table> 
                 </div>
             </div>
-            <div class="col-sm-3">
-            <h3>Senator</h3>
-                <div class="voteDisplay">
-                    <table width="100%">
-                        <tr>
-                            <th>Candidate</th>
-                            <th>Votes</th>
-                        </tr>
-                        <tr>
-                            <td>Hassan Wakamoni</td>
-                            <td>234</td>
-                        </tr>
-                        <tr>
-                            <td>Gideon Ushindi</td>
-                            <td>235</td>
-                        </tr>
-                        <tr>
-                            <td>Stephen Githae</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>Jacob Juma</td>
-                            <td>294</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td>800</td>
-                        </tr>
-                    </table>
-
-                </div>
-            </div>
-            <div class="col-sm-3">
-            <h3>Women Representative</h3>
-                <div class="voteDisplay">
-                    <table width="100%">
-                        <tr>
-                            <th>Candidate</th>
-                            <th>Votes</th>
-                        </tr>
-                        <tr>
-                            <td>Hassan Wakamoni</td>
-                            <td>234</td>
-                        </tr>
-                        <tr>
-                            <td>Gideon Ushindi</td>
-                            <td>235</td>
-                        </tr>
-                        <tr>
-                            <td>Stephen Githae</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>Jacob Juma</td>
-                            <td>294</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td>800</td>
-                        </tr>
-                    </table>
-
-                </div>
-            </div>
+<!--end of women rep-->
         </div>
-
-    </div>
         
 
     
