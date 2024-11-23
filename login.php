@@ -36,7 +36,7 @@
              if(isset($_POST["regno"]) && isset($_POST["idnumber"])){
                 $regno = $_POST["regno"];
                 $idnumber = $_POST["idnumber"];
-                $sql = "SELECT first_name, last_name, id_number, reg_number FROM Voters WHERE reg_number='$regno' AND id_number='$idnumber'";
+                $sql = "SELECT voter_id, first_name, last_name, id_number, reg_number FROM Voters WHERE reg_number='$regno' AND id_number='$idnumber'";
                 $result = mysqli_query($conn, $sql);
                 if(mysqli_num_rows($result) > 0){
                     echo '<div class="alert alert-success" role="alert">'; echo "Login Succesful"; echo '</div>';
@@ -44,6 +44,7 @@
                         session_start();
                         $_SESSION["username"] = $row["first_name"] . " " . $row["last_name"];
                         $_SESSION["is_logged_in"] = true;
+                        $_SESSION["voter_id"] = $row["voter_id"];
                         header("Location: home.php");
                     }
                 } else{
