@@ -19,16 +19,6 @@
                         <td><label>Last Name<br><input type="text" name="lname" class="form-control" required /></label></td>
                     </tr>
                 </table>
-                <label for="county">County</label><br>
-                <select name="county" class="form-control" required>
-                    <option value="">Select County</option>
-                    <?php
-                        $counties = array("Lamu", "Tana River", "Mombasa", "Kilifi");
-                        foreach ($counties as $county) {
-                            echo "<option value='$county'>$county</option>";
-                        }
-                   ?>
-                </select>
                 <label for="password">ID Number</label><br>
                 <input type="password" id="password" class="form-control" name="idnumber" required><br>
                 <a href="login.php">Already registered? login here</a>
@@ -49,10 +39,9 @@
                // echo "Connected";
              }
 
-             if(isset($_POST["fname"]) && isset($_POST["lname"]) && isset($_POST["county"]) && isset($_POST["idnumber"])){
+             if(isset($_POST["fname"]) && isset($_POST["lname"]) && isset($_POST["idnumber"])){
                 $fname = $_POST["fname"];
                 $lname = $_POST["lname"];
-                $county = $_POST["county"];
                 $idnumber = $_POST["idnumber"];
                 $sql1 = "SELECT id_number FROM Voters WHERE id_number = '$idnumber' ";
                 $result = mysqli_query($conn, $sql1);

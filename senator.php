@@ -1,7 +1,7 @@
 <?php 
 session_start();
-echo $_SESSION["voter_id"] ;
-echo $_SESSION["is_logged_in"] ;
+//echo $_SESSION["voter_id"] ;
+//echo $_SESSION["is_logged_in"] ;
 $logged_in = false;
 if(isset($_SESSION["voter_id"]) && isset($_SESSION["is_logged_in"])){
   $voter_id = $_SESSION["voter_id"];
@@ -64,9 +64,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
       $select_voter_id = "SELECT voter_id FROM SenatorVotes WHERE voter_id = '$voter_id' ";
       $result1 = mysqli_query($conn, $select_voter_id);
-      echo $senator;
+      //echo $senator;
       if(mysqli_num_rows($result1) > 0){
-        echo "You have already voted";
+        echo '<br><br><div id="alert" class="alert alert-danger"><strong>You have already voted</strong></div>';
+        //echo "You have already voted";
       }
       else{
         $select_senator = "SELECT senator_id FROM Senator WHERE senator_name = '$senator' ";

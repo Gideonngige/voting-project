@@ -1,7 +1,7 @@
 <?php 
 session_start();
-echo $_SESSION["voter_id"] ;
-echo $_SESSION["is_logged_in"] ;
+//echo $_SESSION["voter_id"] ;
+//echo $_SESSION["is_logged_in"] ;
 $logged_in = false;
 if(isset($_SESSION["voter_id"]) && isset($_SESSION["is_logged_in"])){
   $voter_id = $_SESSION["voter_id"];
@@ -56,7 +56,7 @@ else{
         ?><hr>
 <a href="home.php"><input type="button" class="btnBack" onclick="backToSenator()" value="Back" /></a>
 <input type="submit" class="btnNext" name="vote_governor"   value="Vote" <?php if(!$logged_in) echo 'disabled'; ?> />
-</form>
+</form><br>
 <?php 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
   if(isset($_POST['governor']) && isset($_POST['vote_governor'])){
@@ -64,9 +64,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
       $select_voter_id = "SELECT voter_id FROM GovernorVotes WHERE voter_id = '$voter_id' ";
       $result1 = mysqli_query($conn, $select_voter_id);
-      echo $governor;
+      //echo $governor;
       if(mysqli_num_rows($result1) > 0){
-        echo "You have already voted";
+        echo '<br><br><div id="alert" class="alert alert-danger"><strong>You have already voted</strong></div>';
+        //echo "You have already voted";
       }
       else{
         $select_governor = "SELECT governor_id FROM Governor WHERE governor_name = '$governor' ";

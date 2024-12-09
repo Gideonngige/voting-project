@@ -124,7 +124,7 @@ else{
  
 <script>
 var timeDisplay = document.getElementById("timeDisplay");
-var countDownDate = new Date("November 25, 2024 00:00:00").getTime();
+var countDownDate = new Date("December 11, 2024 00:00:00").getTime();
 var countdownFunction = setInterval(function() { var now = new Date().getTime(); 
   var distance = countDownDate - now; 
   // Time calculations for days, hours, minutes and seconds 
